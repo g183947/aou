@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+
+        #box1 {
+            width: 1210px;
+             border: 1px solid black; 
+            display: flex;
+            flex-wrap: wrap;
+            margin: auto;
+            box-shadow: 0 0 5px #666;
+        }
+
+        .Sub-boxes {
+            width: 217px;
+            height: 250px;
+            text-align: center;
+            margin: 10px;
+        }
+
+        .img {
+            width: 200px;
+            height: 150px;
+        }
+
+        .Special {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            color: aliceblue;
+            background-color: rgb(219, 87, 218);
+
+        }
+
+        .Price {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .size {
+            width: 190px;
+            height: 40px;
+            margin-top: 15px;
+            margin-left: 10px;
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        #box2 {
+            width: 1210px;
+            border: 1px solid black;
+            margin: auto;
+            box-shadow: 0 0 5px #666;
+            margin-top: 10px;
+        }
+
+        .Sale {
+
+            font-size: 20px;
+            width: 1210px;
+            border-bottom: 3px solid rgb(208, 208, 208);
+        }
+
+        .sa {
+            width: 200px;
+            height: 50px;
+            padding-left: 30px;
+            line-height: 50px;
+            color: rgb(221, 48, 121);
+            border-bottom: 5px solid rgb(221, 48, 121);
+        }
+
+        .di {
+            margin-top: 10px;
+            width: 1210px;
+            height: 50px;
+            display: inline-block;
+            line-height: 50px;
+        }
+
+        .x {
+            color: rgb(131, 125, 125);
+            margin-left: 13px;
+        }
+
+        .go {
+            font-size: 15px;
+            color: grey;
+        }
+
+        table {
+            margin-top: 20px;
+            width: 1210px;
+            height: 40px;
+            text-align: center;
+            background-color: rgb(249, 249, 249);
+        }
+
+        .shop {
+            width: 1210px;
+            height: 40px;
+            margin-left: 10px;
+            line-height: 40px;
+            color: rgb(221, 48, 121);
+            ;
+        }
+
+        .in {
+            width: 100px;
+            height: 100px;
+        }
+
+        .check {
+            vertical-align: text-top;
+            margin-top: -50px;
+        }
+
+        .si {
+            width: 200px;
+            height: 65px;
+            display: inline-block;
+            vertical-align: text-top;
+            margin-top: -75px;
+
+        }
+
+        .i {
+            margin-left: -203px;
+        }
+
+        .table2 {
+            margin-top: 20px;
+            width: 1210px;
+            display: flex;
+            background-color: rgb(249, 249, 249);
+        }
+
+        .tr {
+            width: 350px;
+            height: 110px;
+            text-align: center;
+            line-height: 110px;
+        }
+
+        .tr1 {
+            width: 350px;
+            height: 110px;
+        }
+
+        .tr2 {
+            width: 350px;
+            height: 110px;
+            text-align: center;
+            line-height: 110px;
+            color: rgb(233, 90, 161);
+        }
+
+        .yun {
+            width: 90px;
+            height: 20px;
+            text-align: center;
+            margin: 10px;
+            display: inline-block;
+            border: 1px solid green;
+            border-radius: 50px;
+            color: green;
+        }
+
+        .foot {
+            width: 1210px;
+            height: 232px;
+            background-color: rgb(255, 255, 255);
+            margin: auto;
+            margin-top: 10px;
+            /* border:1px solid rgb(47, 45, 46);
+             box-shadow: 0 0 5px #666; */
+        }
+
+        select {
+            width: 200px;
+            height: 40px;
+            margin: 10px;
+            border: 1px solid rgb(205, 27, 157);
+            color: rgb(205, 27, 157);
+        }
+
+        .right {
+            width: 300px;
+            height: 100px;
+            float: right;
+            line-height: 30px;
+            margin-top: 10px;
+            text-align: center;
+            color: darkgrey;
+            font-size: 19px;
+        }
+
+        .gtr {
+            width: 1210px;
+            height: 99px;
+            margin: auto;
+            margin-top: 90px;
+            background-color: rgb(243, 243, 243);
+        }
+
+        .com {
+            width: 200px;
+            height: 90px;
+             display: inline-block;
+            line-height: 90px;
+            margin-left: 700px;
+        }
+
+        .sun {
+            display: inline-block;
+            width: 300px;
+            height: 90px;
+            text-align: center;
+            line-height: 90px;
+            background-color: rgb(221, 48, 127);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="box1">
+            <div class="Sub-boxes" v-for="(time,index) in tes" @click="add(time)">
+                <img :src="time.img" class="img">
+                <span class="Special">{{time.Special}}</span>
+                <span class="Price">￥{{time.jing}}</span>
+                <del>{{time.yuan}}</del>
+                <span>{{time.zhe}}</span>
+                <span class="size">{{time.nei}}</span>
+            </div>
+        </div>
+        <div id="box2">
+            <div class="Sale">
+                <div class="sa">
+                    <span>特卖商品{{formatTime }}</span>
+                </div>
+                <div class="di">
+                    <p>
+                        配送至 <b>广州市</b><span class="x">|</span>
+                        <span class="go">勾选商品
+                            即可锁定库存20分钟，倒计时内不用担心商品被抢走</span>
+                    </p>
+                </div>
+            </div>
+            <table class="table1">
+                <thead>
+                    <tr>
+                        <td>商品</td>
+                        <td>单价</td>
+                        <td>数量</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+
+            </table>
+            <span class="shop">唯品自营</span>
+            <div class="table2" v-for="(item,index) in list">
+                <div class="tr1">
+                    <input type="checkbox" class="check" checked="item.stats" @click="getstarts(index)">
+                    <img :src="item.img" class="in">
+                    <span class="si">{{item.nei}}</span>
+                    <span class="i">尺码:{{item.chi}}</span>
+                </div>
+                <div class="tr2">
+                    <span>￥{{item.jing}}</span>
+                </div>
+                <div class="tr">
+                    <button @click="subtrahend(index)">-</button>
+                    <span>{{item.quantity}}</span>
+                    <button @click="addend(index)">+</button>
+                </div>
+                <div class="tr">
+                    <button @click="delet(index)">删除</button>
+                </div>
+
+            </div>
+            <div class="foot">
+                <div>
+                    <span class="yun">运费</span>
+                    <span>新人免邮</span>
+                    <span><svg t="1690722014701" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="3179" width="15" height="15">
+                            <path
+                                d="M463.99957 784.352211c0 26.509985 21.490445 48.00043 48.00043 48.00043s48.00043-21.490445 48.00043-48.00043c0-26.509985-21.490445-48.00043-48.00043-48.00043S463.99957 757.842226 463.99957 784.352211z"
+                                fill="blue" p-id="3180"></path>
+                            <path
+                                d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"
+                                fill="blue" p-id="3181"></path>
+                            <path
+                                d="M512 673.695256c-17.664722 0-32.00086-14.336138-32.00086-31.99914l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.919957 52.67249-52.67249 52.67249-74.016718 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385c0 47.904099-36.32028 84.191695-71.424378 119.295794-27.839699 27.776052-56.575622 56.511974-56.575622 82.3356l0 54.112297C544.00086 659.328155 529.664722 673.695256 512 673.695256z"
+                                fill="blue" p-id="3182">
+                            </path>
+                        </svg></span>
+                </div>
+                <select>
+                    <option>优惠卷</option>
+                    <option>5元</option>
+                    <option>10元</option>
+                </select>
+                <div class="right">
+                    <pre>共<span style="color:fuchsia" v-text="num"></span class="n">件商品 商品金额</pre>
+                    <pre>总金额（未含运费）￥<span style="color:fuchsia" v-text="total"></span></pre>
+                </div>
+                <div class="gtr">
+                    <span class="com">请在倒计时结束前结算
+                        <svg t="1690722014701" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="3179" width="15" height="15">
+                            <path
+                                d="M463.99957 784.352211c0 26.509985 21.490445 48.00043 48.00043 48.00043s48.00043-21.490445 48.00043-48.00043c0-26.509985-21.490445-48.00043-48.00043-48.00043S463.99957 757.842226 463.99957 784.352211z"
+                                fill="blue" p-id="3180"></path>
+                            <path
+                                d="M512 960c-247.039484 0-448-200.960516-448-448S264.960516 64 512 64 960 264.960516 960 512 759.039484 960 512 960zM512 128.287273c-211.584464 0-383.712727 172.128262-383.712727 383.712727 0 211.551781 172.128262 383.712727 383.712727 383.712727 211.551781 0 383.712727-172.159226 383.712727-383.712727C895.712727 300.415536 723.551781 128.287273 512 128.287273z"
+                                fill="blue" p-id="3181"></path>
+                            <path
+                                d="M512 673.695256c-17.664722 0-32.00086-14.336138-32.00086-31.99914l0-54.112297c0-52.352533 39.999785-92.352318 75.32751-127.647359 25.887273-25.919957 52.67249-52.67249 52.67249-74.016718 0-53.343368-43.07206-96.735385-95.99914-96.735385-53.823303 0-95.99914 41.535923-95.99914 94.559333 0 17.664722-14.336138 31.99914-32.00086 31.99914s-32.00086-14.336138-32.00086-31.99914c0-87.423948 71.775299-158.559333 160.00086-158.559333s160.00086 72.095256 160.00086 160.735385c0 47.904099-36.32028 84.191695-71.424378 119.295794-27.839699 27.776052-56.575622 56.511974-56.575622 82.3356l0 54.112297C544.00086 659.328155 529.664722 673.695256 512 673.695256z"
+                                fill="blue" p-id="3182">
+                            </path>
+                        </svg>
+                    </span>
+                    <div class="sun" @click="startCountdown">
+                        立即结算{{formatTime}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    new Vue({
+        el: "#box",
+        data() {
+            return {
+                total: 0,
+                num: 1,
+                countdownTime: 20 * 60,
+                tes: [
+                    {
+                        id: 1,
+                        img: "./img/1.jpg",
+                        Special: "特卖价",
+                        jing: "198",
+                        yuan: "￥689",
+                        zhe: "2.9折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本",
+                        quantity: 1,
+                        chi: "L",
+                        stats: true,
+                    },
+                    {
+                        id: 2,
+                        img: "./img/2.jpg",
+                        Special: "特卖价",
+                        jing: "196.8",
+                        yuan: "￥896",
+                        zhe: "2.2折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本快来抢购",
+                        quantity: 1,
+                        chi: "XL",
+                        stats: true,
+
+                    },
+                    {
+                        id: 3,
+                        img: "./img/3.jpg",
+                        Special: "特卖价",
+                        jing: "199.8",
+                        yuan: "￥900",
+                        zhe: "2.2折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本快来抢购",
+                        quantity: 1,
+                        chi: "2XL",
+                        stats: true,
+                    },
+                    {
+                        id: 4,
+                        img: "./img/4.jpg",
+                        Special: "特卖价",
+                        jing: "314",
+                        yuan: "￥1089",
+                        zhe: "2.9折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本气质风盘红色连衣裙 ",
+                        quantity: 1,
+                        chi: "2XL",
+                        stats: true,
+                    },
+                    {
+                        id: 5,
+                        img: "./img/5.jpg",
+                        Special: "特卖价",
+                        jing: "220",
+                        yuan: "￥1076",
+                        zhe: "2.3折 ",
+                        nei: "夏季新款温柔度假风轻薄外套女改良版本气质风盘连衣裙",
+                        quantity: 1,
+                        chi: "3XL",
+                        stats: true,
+                    },
+                    {
+                        id: 6,
+                        img: "./img/6.jpg",
+                        Special: "特卖价",
+                        jing: "150",
+                        yuan: "￥999",
+                        zhe: "2.2折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本快来抢购",
+                        quantity: 1,
+                        chi: "XL",
+                        stats: true,
+
+                    },
+                    {
+                        id: 7,
+                        img: "./img/7.jpg",
+                        Special: "特卖价",
+                        jing: "150",
+                        yuan: "￥1076",
+                        zhe: "2.3折 ",
+                        nei: "夏季新款温柔度假风轻薄外套女改良版本气质风盘连衣裙",
+                        quantity: 1,
+                        chi: "1XL",
+                        stats: true,
+
+                    },
+                    {
+                        id: 8,
+                        img: "./img/8.jpg",
+                        Special: "特卖价",
+                        jing: "198",
+                        yuan: "￥689",
+                        zhe: "2.9折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本",
+                        quantity: 1,
+                        chi: "3XL",
+                        stats: true,
+
+                    },
+                    {
+                        id: 9,
+                        img: "./img/9.jpg",
+                        Special: "特卖价",
+                        jing: "196.8",
+                        yuan: "￥896",
+                        zhe: "2.2折 ",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本快来抢购",
+                        quantity: 1,
+                        chi: "L",
+                        stats: true,
+                    },
+                    {
+                        id: 10,
+                        img: "./img/10.jpg",
+                        Special: "特卖价",
+                        jing: "189",
+                        yuan: "￥698",
+                        zhe: "2.7折 ",
+                        nei: "夏季新款温柔度假风轻薄外套女改良版本气质风盘连衣裙",
+                        quantity: 1,
+                        chi: "XL",
+                        stats: true,
+                    }],
+                list: [
+                    {
+                        img: "./img/1.jpg",
+                        quantity: 1,
+                        jing: "198",
+                        nei: "2023夏季新款温柔度假风轻薄外套女改良版本",
+                        chi: "L",
+                        stats: true,
+                    }
+                ]
+            }
+        },
+        methods: {
+            //添加
+            add(time) {
+                this.list.push(
+                    {
+                     img:time.img,
+                     quantity:time.quantity,
+                     jing:time.jing,
+                     nei:time.nei,
+                     chi:time.chi,
+                     stats:time.stats,
+                    }
+                );
+               
+                this.cont()
+                this.numFun()
+            },
+            //删除
+            delet(index) {
+                this.list.splice(index, 1);
+                console.log(this.list);
+                this.cont()
+            },
+            //加减
+            addend(index) {
+                if (this.list[index].quantity >= 10) {
+                    confirm("库存不足");
+                    return
+                }
+                this.list[index].quantity++;
+                this.cont()
+                this.num++
+            },
+            subtrahend(index) {
+                if (this.list[index].quantity == 1) {
+                    confirm("最少选一件");
+                    return
+                }
+                this.list[index].quantity--;
+                this.cont()
+                this.num--
+            },
+            //去结算
+            cont() {
+                this.total = this.list.reduce((sum, item) => {
+
+                    return sum + item.jing * item.quantity;
+                    console.log(sum, item);
+                }, 0)
+            },
+            getstarts(index) {
+                this.list[index].stats = !this.list[index].stats;
+                // console.log(this.list[index].stats);
+                if (!this.list[index].stats) {
+                   
+                    this.total = this.total - this.list[index].jing;
+                    this.cont()
+                    console.log(this.list[index].stats);
+                } else {
+                 this.total = this.total + this.list[index].jing;
+                    this.cont()
+                    console.log(this.total);
+                }
+
+            },
+
+            //倒计时
+            formatNumber(value) {
+                return value.toString().padStart(2, '0');
+            },
+            startCountdown() {
+
+                setInterval(() => {
+                    if (this.countdownTime > 0) {
+                        this.countdownTime--;
+                    }
+                }, 1000);
+            },
+            numFun() {
+                this.num = this.list.length;
+            }
+        },
+        computed: {
+            formatTime() {
+                const minutes = Math.floor(this.countdownTime / 60);
+                const seconds = this.countdownTime % 60;
+                return `${this.formatNumber(minutes)}:${this.formatNumber(seconds)}`;
+            },
+        },
+        mounted() {
+            this.startCountdown();
+        },
+    })
+
+</script>
+
+</html>
